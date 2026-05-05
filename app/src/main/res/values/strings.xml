@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyCar</string>
+    <string name="quarterly_maintenance">Quarterly Maintenance</string>
+    <string name="no_detected_issues">No detected issues</string>
+    <string name="high_confidence">High confidence</string>
+    <string name="medium_confidence">Medium confidence</string>
+</resources>

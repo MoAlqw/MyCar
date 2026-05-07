@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.domain.model.Vehicle
+import com.example.domain.model.vehicle.Vehicle
 import com.example.mycar.R
 import com.example.mycar.databinding.FragmentAddVehicleBinding
 import com.example.mycar.fragments.BaseFragment

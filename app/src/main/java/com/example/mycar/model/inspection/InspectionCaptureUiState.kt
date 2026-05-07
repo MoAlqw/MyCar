@@ -1,6 +1,7 @@
 package com.example.mycar.model.inspection
 
 import com.example.domain.model.inspection.CarSide
+import com.example.mycar.R
 
 data class InspectionCaptureUiState(
     val inspectionId: String? = null,
@@ -25,4 +26,19 @@ data class InspectionCaptureUiState(
 
     val isLastStep: Boolean
         get() = currentStepIndex == steps.lastIndex
+
+    val imageOfCurrentStep: Int
+        get() = when (currentStep.side) {
+            CarSide.FRONT, CarSide.REAR -> {
+                R.drawable.car_front
+            }
+            CarSide.LEFT -> R.drawable.car_side
+            CarSide.RIGHT -> R.drawable.car_side
+        }
+}
+
+fun InspectionCaptureUiState.toOverlay() = when (this.currentSide) {
+    CarSide.FRONT, CarSide.REAR -> OverlayConfig(R.drawable.car_front)
+    CarSide.LEFT -> OverlayConfig(R.drawable.car_side)
+    CarSide.RIGHT -> OverlayConfig(R.drawable.car_side, scaleX = -1f)
 }

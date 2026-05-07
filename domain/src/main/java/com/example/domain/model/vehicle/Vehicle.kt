@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.domain.model.vehicle
 
 data class Vehicle(
     val id: String,

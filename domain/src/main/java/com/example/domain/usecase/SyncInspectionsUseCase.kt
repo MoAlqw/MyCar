@@ -1,6 +1,6 @@
 package com.example.domain.usecase
 
-import com.example.domain.repository.InspectionRepository
+import com.example.domain.repository.inspection.InspectionRepository
 
 class SyncInspectionsUseCase(
     private val inspectionRepository: InspectionRepository

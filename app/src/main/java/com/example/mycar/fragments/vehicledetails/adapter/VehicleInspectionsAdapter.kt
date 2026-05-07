@@ -1,6 +1,7 @@
 package com.example.mycar.fragments.vehicledetails.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -11,7 +12,8 @@ import com.example.mycar.databinding.ItemInspectionCardBinding
 import com.example.mycar.model.inspection.InspectionUi
 
 class VehicleInspectionsAdapter(
-    private val onItemClick: (String) -> Unit
+    private val onItemClick: (String) -> Unit,
+    private val onLongClick: (InspectionUi, View) -> Unit
 ): ListAdapter<InspectionUi, VehicleInspectionsAdapter.VehicleInspectionsViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleInspectionsViewHolder {
@@ -27,12 +29,10 @@ class VehicleInspectionsAdapter(
         holder.bind(getItem(position))
     }
 
-    class VehicleInspectionsViewHolder(
+    inner class VehicleInspectionsViewHolder(
         private val binding: ItemInspectionCardBinding,
         private val onItemClick: (String) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-
-        private var inspectionId: String = ""
 
         private val backgroundSuccess = ContextCompat.getDrawable(
             binding.root.context,
@@ -54,29 +54,54 @@ class VehicleInspectionsAdapter(
             binding.root.context,
             R.color.brand_green
         )
-        private val tintError = ContextCompat.getColorStateList(
-            binding.root.context,
-            R.color.error_light
-        )
 
         init {
             binding.root.setOnClickListener {
-                onItemClick(inspectionId)
+                onItemClick(getItem(adapterPosition).id)
+            }
+            binding.root.setOnLongClickListener {
+                onLongClick(getItem(adapterPosition), it)
+                true
             }
         }
 
         fun bind(item: InspectionUi) {
-            inspectionId = item.id
             binding.tvInspectionSubtitle.text = item.displayDate
+
+            if (item.isBaseline) {
+                binding.mcwInspection.strokeWidth = 6
+                binding.mcwInspection.strokeColor = ContextCompat.getColor(
+                    binding.root.context,
+                    R.color.gold
+                )
+                binding.mcwInspection.setCardBackgroundColor(
+                    ContextCompat.getColor(binding.root.context, R.color.darkness_green)
+                )
+            }
 
             if (item.damageStatus > 0) {
                 binding.flInspectionIcon.background = backgroundError
                 binding.ivInspectionOfVehicle.setImageDrawable(iconError)
-                binding.ivInspectionOfVehicle.imageTintList = tintError
             } else {
                 binding.flInspectionIcon.background = backgroundSuccess
                 binding.ivInspectionOfVehicle.setImageDrawable(iconSuccess)
                 binding.ivInspectionOfVehicle.imageTintList = tintSuccess
+            }
+
+            if (item.addedIssues > 0) {
+                binding.tvAddedIssues.visibility = View.VISIBLE
+                binding.tvAddedIssues.text =
+                    binding.root.context.getString(R.string.issues_added, item.addedIssues)
+            } else {
+                binding.tvAddedIssues.visibility = View.GONE
+            }
+
+            if (item.removedIssues > 0) {
+                binding.tvRemovedIssues.visibility = View.VISIBLE
+                binding.tvRemovedIssues.text =
+                    binding.root.context.getString(R.string.issues_removed, item.removedIssues)
+            } else {
+                binding.tvRemovedIssues.visibility = View.GONE
             }
         }
     }

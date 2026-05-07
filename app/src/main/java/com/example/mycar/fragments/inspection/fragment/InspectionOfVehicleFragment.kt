@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.example.domain.model.inspection.CarSide
 import com.example.mycar.BuildConfig
+import com.example.mycar.R
 import com.example.mycar.databinding.FragmentInspectionDetailsBinding
 import com.example.mycar.fragments.BaseFragment
 import com.example.mycar.fragments.inspection.adapter.InspectionOfVehicleAdapter
@@ -39,7 +40,6 @@ class InspectionOfVehicleFragment: BaseFragment<FragmentInspectionDetailsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
         setupAdapter()
         observeInspection()
     }
@@ -60,12 +60,6 @@ class InspectionOfVehicleFragment: BaseFragment<FragmentInspectionDetailsBinding
         }
     }
 
-    private fun setupToolbar() {
-        binding.toolbar.setNavigationOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
-    }
-
     private fun setUi(inspection: InspectionOfVehicleUi) {
         bindBasicInfo(inspection)
         loadCarImages(inspection.sides)
@@ -74,7 +68,7 @@ class InspectionOfVehicleFragment: BaseFragment<FragmentInspectionDetailsBinding
 
     private fun bindBasicInfo(inspection: InspectionOfVehicleUi) {
         binding.tvTotalIssues.text = inspection.totalDamageCount.toString()
-        binding.tvConfidence.text = "${inspection.confidence}%"
+        binding.tvConfidence.text = getString(R.string.confidence_percent, inspection.confidence)
     }
 
     private fun loadCarImages(sides: List<InspectionSideUi>) {

@@ -21,7 +21,7 @@ android {
         buildConfigField(
             "String",
             "BASE_URL",
-            "\"http://10.0.2.2:8000/\""
+            "\"https://ad26-188-130-156-138.ngrok-free.app/\""
         )
     }
 
@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.viewpager2)
     implementation(libs.androidx.activity)
     implementation(libs.fragment.ktx)
     implementation(libs.androidx.constraintlayout)

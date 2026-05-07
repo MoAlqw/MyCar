@@ -1,13 +1,18 @@
 package com.example.mycar.di
 
-import com.example.domain.repository.InspectionRepository
-import com.example.domain.repository.VehicleRepository
+import com.example.domain.comparator.InspectionComparator
+import com.example.domain.repository.baseline.BaselineVehicleRepository
+import com.example.domain.repository.inspection.InspectionRepository
+import com.example.domain.repository.vehicle.VehicleRepository
 import com.example.domain.usecase.AddVehicleUseCase
+import com.example.domain.usecase.CompareInspectionUseCase
 import com.example.domain.usecase.DeleteVehicleUseCase
 import com.example.domain.usecase.GetAllInspectionsOfVehicleUseCase
+import com.example.domain.usecase.GetBaselineUseCase
 import com.example.domain.usecase.GetInspectionUseCase
 import com.example.domain.usecase.GetVehicleDetailsUseCase
 import com.example.domain.usecase.ObserveVehiclesUseCase
+import com.example.domain.usecase.SetBaselineUseCase
 import com.example.domain.usecase.SyncInspectionsUseCase
 import com.example.domain.usecase.UploadInspectionUseCase
 import dagger.Module
@@ -73,5 +78,28 @@ object UseCaseModule {
         inspectionRepository: InspectionRepository
     ): SyncInspectionsUseCase {
         return SyncInspectionsUseCase(inspectionRepository)
+    }
+
+    @Provides
+    fun provideGetBaselineUseCase(
+        baselineVehicleRepository: BaselineVehicleRepository,
+        inspectionRepository: InspectionRepository
+    ): GetBaselineUseCase {
+        return GetBaselineUseCase(baselineVehicleRepository, inspectionRepository)
+    }
+
+    @Provides
+    fun provideSetBaselineUseCase(
+        baselineVehicleRepository: BaselineVehicleRepository
+    ): SetBaselineUseCase {
+        return SetBaselineUseCase(baselineVehicleRepository)
+    }
+
+    @Provides
+    fun provideCompareInspectionUseCase(
+        inspectionRepository: InspectionRepository,
+        comparator: InspectionComparator
+    ): CompareInspectionUseCase {
+        return CompareInspectionUseCase(inspectionRepository, comparator)
     }
 }

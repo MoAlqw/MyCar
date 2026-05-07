@@ -2,20 +2,22 @@ package com.example.mycar.fragments.vehicledetails.fragment
 
 import android.os.Bundle
 import android.view.View
+import android.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.domain.model.Vehicle
+import com.example.domain.model.vehicle.Vehicle
 import com.example.mycar.R
 import com.example.mycar.databinding.FragmentVehicleDetailsBinding
 import com.example.mycar.fragments.BaseFragment
-import com.example.mycar.fragments.inspection.fragment.InspectionOfVehicleFragment
+import com.example.mycar.fragments.compare.InspectionDetailsContainerFragment
 import com.example.mycar.fragments.vehicledetails.adapter.VehicleInspectionsAdapter
 import com.example.mycar.fragments.vehicledetails.viewmodel.VehicleDetailsViewModel
 import com.example.mycar.fragments.vehicleinspection.InspectionFlowFragment
+import com.example.mycar.model.inspection.InspectionUi
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,22 +26,17 @@ import kotlinx.coroutines.launch
 class VehicleDetailsFragment : BaseFragment<FragmentVehicleDetailsBinding>(
     FragmentVehicleDetailsBinding::inflate
 ) {
-
     private val viewModel: VehicleDetailsViewModel by viewModels()
 
     private val inspectionsAdapter by lazy {
-        VehicleInspectionsAdapter { inspectionId ->
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left,
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                .replace(R.id.main, InspectionOfVehicleFragment.newInstance(inspectionId))
-                .addToBackStack(null)
-                .commit()
-        }
+        VehicleInspectionsAdapter(
+            onItemClick = {
+                openInspection(it)
+            },
+            onLongClick = { inspection, view ->
+                showPopup(view, inspection)
+            }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -140,23 +137,55 @@ class VehicleDetailsFragment : BaseFragment<FragmentVehicleDetailsBinding>(
         ) { _, bundle ->
             val inspectionId = bundle.getString(InspectionFlowFragment.RESULT_COMPLETED)
             if (inspectionId != null) {
-                parentFragmentManager.beginTransaction()
-                    .setCustomAnimations(
-                        R.anim.slide_in_right,
-                        R.anim.slide_out_left,
-                        R.anim.slide_in_left,
-                        R.anim.slide_out_right
-                    )
-                    .replace(R.id.main, InspectionOfVehicleFragment.newInstance(inspectionId))
-                    .addToBackStack(null)
-                    .commit()
+                openInspection(inspectionId)
             }
         }
     }
 
     private fun setUi(vehicle: Vehicle) = with(binding) {
-        tvVehicleTitle.text = "${vehicle.year} ${vehicle.make} ${vehicle.model}"
-        tvVin.text = vehicle.vin
+        tvVehicleTitle.text =
+            getString(
+                R.string.vehicle_year,
+                vehicle.year,
+                vehicle.make,
+                vehicle.model
+            )
+        tvVin.text = getString(R.string.vehicle_vin, vehicle.vin)
+    }
+
+    private fun openInspection(inspectionId: String) {
+        val baselineId = viewModel.inspectionBaselineId()
+        parentFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .replace(
+                R.id.main,
+                InspectionDetailsContainerFragment.newInstance(inspectionId, baselineId)
+            )
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun showPopup(view: View, item: InspectionUi) {
+        val stringMakeBaseline = getString(R.string.make_baseline)
+        val popup = PopupMenu(view.context, view)
+        popup.menu.add(stringMakeBaseline)
+
+        popup.setOnMenuItemClickListener {
+            when (it.title) {
+                stringMakeBaseline -> {
+                    viewModel.setBaseline(item.vehicleId, item.id)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popup.show()
     }
 
     companion object {

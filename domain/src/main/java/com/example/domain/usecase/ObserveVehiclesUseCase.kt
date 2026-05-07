@@ -1,7 +1,7 @@
 package com.example.domain.usecase
 
-import com.example.domain.model.Vehicle
-import com.example.domain.repository.VehicleRepository
+import com.example.domain.model.vehicle.Vehicle
+import com.example.domain.repository.vehicle.VehicleRepository
 import kotlinx.coroutines.flow.Flow
 
 class ObserveVehiclesUseCase(

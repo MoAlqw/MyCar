@@ -1,6 +1,7 @@
 package com.example.mycar.model.inspection
 
 import com.example.domain.model.inspection.Inspection
+import com.example.domain.model.inspection.nameSide
 
 data class InspectionOfVehicleUi(
     val totalDamageCount: Int,
@@ -22,7 +23,7 @@ fun Inspection.toInspectionOfVehicleUi(): InspectionOfVehicleUi {
         for (detection in side.detections) {
             sum += detection.confidence
             count++
-            detections.add(detection.label)
+            detections.add(side.side.nameSide() + ": " + detection.label.replaceFirstChar { it.uppercase() })
         }
     }
 

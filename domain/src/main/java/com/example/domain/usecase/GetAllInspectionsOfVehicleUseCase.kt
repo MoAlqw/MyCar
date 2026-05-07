@@ -1,7 +1,7 @@
 package com.example.domain.usecase
 
 import com.example.domain.model.inspection.Inspection
-import com.example.domain.repository.InspectionRepository
+import com.example.domain.repository.inspection.InspectionRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn

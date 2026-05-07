@@ -7,6 +7,13 @@ enum class CarSide {
     RIGHT
 }
 
+fun CarSide.nameSide(): String = when (this) {
+    CarSide.FRONT -> "Front"
+    CarSide.REAR -> "Rear"
+    CarSide.LEFT -> "Left"
+    CarSide.RIGHT -> "Right"
+}
+
 fun CarSide.title(): String = when (this) {
     CarSide.FRONT -> "Front View"
     CarSide.REAR -> "Rear View"

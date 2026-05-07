@@ -2,7 +2,7 @@ package com.example.mycar.fragments.vehiclesadd
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.model.Vehicle
+import com.example.domain.model.vehicle.Vehicle
 import com.example.domain.usecase.AddVehicleUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

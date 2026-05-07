@@ -34,7 +34,7 @@ class InspectionOfVehicleAdapter:
 
         fun bind(item: IssuesDetectionsUi) {
             binding.tvIssueTitle.text = item.name
-            binding.tvSeverity.text = item.levelOfSeverity
+            binding.tvSeverity.text = binding.root.context.getString(item.levelOfSeverity)
             binding.tvConfidenceBadge.text =
                if (item.confidence < 75) mediumConfidence else highConfidence
         }

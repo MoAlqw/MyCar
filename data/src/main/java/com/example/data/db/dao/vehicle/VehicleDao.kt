@@ -1,4 +1,4 @@
-package com.example.data.db.dao
+package com.example.data.db.dao.vehicle
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -16,7 +16,7 @@ interface VehicleDao {
     @Query("SELECT * FROM vehicles ORDER BY id DESC")
     fun observeAll(): Flow<List<VehicleEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
     suspend fun insert(vehicle: VehicleEntity)
 
     @Query("DELETE FROM vehicles WHERE id = :id")

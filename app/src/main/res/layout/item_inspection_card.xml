@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mcwInspection"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,7 +32,6 @@
                 android:layout_height="28dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_clipboard_check"
-                app:tint="@color/brand_green"
                 android:contentDescription="@null" />
         </FrameLayout>
 
@@ -59,6 +59,26 @@
                 tools:text="Oct 12, 2023 • Passed"
                 android:textColor="#64748B"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvAddedIssues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:visibility="gone"
+                tools:text="+2 Issues Added"
+                android:textColor="@color/error"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvRemovedIssues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:visibility="gone"
+                tools:text="-2 Issues Removed"
+                android:textColor="@color/brand_green"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <ImageView
@@ -67,7 +87,6 @@
             android:src="@drawable/ic_chevron_right"
             app:tint="#94A3B8"
             android:contentDescription="@null" />
-
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -4,14 +4,14 @@ import androidx.room.withTransaction
 import com.example.data.api.InspectionApi
 import com.example.data.api.model.toDomain
 import com.example.data.db.AppDatabase
-import com.example.data.db.dao.InspectionDao
+import com.example.data.db.dao.inspection.InspectionDao
 import com.example.data.db.entity.inspection.DetectionEntity
 import com.example.data.db.entity.inspection.InspectionEntity
 import com.example.data.db.entity.inspection.InspectionSideEntity
 import com.example.data.db.entity.inspection.model.toDomain
 import com.example.domain.model.inspection.CarSide
 import com.example.domain.model.inspection.Inspection
-import com.example.domain.repository.InspectionRepository
+import com.example.domain.repository.inspection.InspectionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import okhttp3.MediaType.Companion.toMediaType
@@ -68,7 +68,11 @@ class InspectionRepositoryImpl @Inject constructor(
     }
 
     override suspend fun syncInspections(vehicleId: String) {
-        val response = api.getVehicleInspections(vehicleId)
+        val response = try {
+            api.getVehicleInspections(vehicleId)
+        } catch (_: Exception) {
+            return
+        }
 
         if (!response.isSuccessful) {
             return

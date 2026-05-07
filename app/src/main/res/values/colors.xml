@@ -7,10 +7,13 @@
     <color name="dark_gray">#64748B</color>
     <color name="dark_green">#2F7F33</color>
     <color name="light_green">#EEF5EE</color>
+    <color name="light_green2">#FFF5EE</color>
     <color name="screen_bg">#F7F7F7</color>
     <color name="text_primary">#0F172A</color>
     <color name="brand_green">#2F8A36</color>
     <color name="skeleton_gray">#E5E7EB</color>
     <color name="error_light">#FFEDD5</color>
     <color name="error">#C2410C</color>
+    <color name="gold">#D4AF37</color>
+    <color name="darkness_green">#1B4332</color>
 </resources>

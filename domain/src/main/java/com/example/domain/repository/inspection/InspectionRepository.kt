@@ -1,4 +1,4 @@
-package com.example.domain.repository
+package com.example.domain.repository.inspection
 
 import com.example.domain.model.inspection.CarSide
 import com.example.domain.model.inspection.Inspection

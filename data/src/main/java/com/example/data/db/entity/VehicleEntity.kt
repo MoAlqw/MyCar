@@ -2,7 +2,7 @@ package com.example.data.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.domain.model.Vehicle
+import com.example.domain.model.vehicle.Vehicle
 
 @Entity(tableName = "vehicles")
 data class VehicleEntity(

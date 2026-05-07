@@ -1,6 +1,6 @@
 package com.example.domain.usecase
 
-import com.example.domain.repository.VehicleRepository
+import com.example.domain.repository.vehicle.VehicleRepository
 
 class DeleteVehicleUseCase(
     private val vehicleRepository: VehicleRepository

@@ -21,6 +21,7 @@ import com.example.domain.model.inspection.title
 import com.example.mycar.databinding.FragmentInspectionCameraBinding
 import com.example.mycar.fragments.BaseFragment
 import com.example.mycar.model.inspection.InspectionCaptureUiState
+import com.example.mycar.model.inspection.toOverlay
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -57,6 +58,15 @@ class InspectionCameraFragment : BaseFragment<FragmentInspectionCameraBinding>(
         } else {
             requestPermission.launch(Manifest.permission.CAMERA)
         }
+
+        binding.ivOverlaySilhouette.animate()
+            .alpha(0.4f)
+            .setDuration(800)
+            .withEndAction {
+                binding.ivOverlaySilhouette.animate()
+                    .alpha(0.7f)
+                    .setDuration(800)
+            }
     }
 
     override fun onDestroyView() {
@@ -76,6 +86,15 @@ class InspectionCameraFragment : BaseFragment<FragmentInspectionCameraBinding>(
         tvTitle.text = state.currentSide.title()
         tvStep.text = state.progressText
         tvInstruction.text = state.currentSide.instruction()
+        applyOverlay(state)
+    }
+
+    private fun applyOverlay(side: InspectionCaptureUiState) = with(binding.ivOverlaySilhouette) {
+        val config = side.toOverlay()
+
+        setImageResource(config.drawable)
+        rotation = config.rotation
+        scaleX = config.scaleX
     }
 
     private fun setupClicks() = with(binding) {
@@ -84,6 +103,9 @@ class InspectionCameraFragment : BaseFragment<FragmentInspectionCameraBinding>(
         }
 
         btnCapture.setOnClickListener {
+            binding.ivOverlaySilhouette.animate()
+                .alpha(0f)
+                .setDuration(150)
             onCaptureClicked()
         }
     }
@@ -133,7 +155,13 @@ class InspectionCameraFragment : BaseFragment<FragmentInspectionCameraBinding>(
             "inspection_${System.currentTimeMillis()}.jpg"
         )
 
-        val outputOptions = ImageCapture.OutputFileOptions.Builder(file).build()
+        val metadata = ImageCapture.Metadata().apply {
+            isReversedHorizontal = false
+        }
+
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(file)
+            .setMetadata(metadata)
+            .build()
 
         imageCapture.takePicture(
             outputOptions,

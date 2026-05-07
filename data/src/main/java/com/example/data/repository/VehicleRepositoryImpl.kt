@@ -1,10 +1,10 @@
 package com.example.data.repository
 
-import com.example.data.db.dao.VehicleDao
+import com.example.data.db.dao.vehicle.VehicleDao
 import com.example.data.db.entity.toDomain
 import com.example.data.db.entity.toEntity
-import com.example.domain.model.Vehicle
-import com.example.domain.repository.VehicleRepository
+import com.example.domain.model.vehicle.Vehicle
+import com.example.domain.repository.vehicle.VehicleRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

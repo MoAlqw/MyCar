@@ -95,37 +95,32 @@
                 tools:text="Align the front of the car within the silhouette." />
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Overlay frame -->
         <FrameLayout
             android:id="@+id/overlayContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Outer guide frame -->
             <View
-                android:id="@+id/overlayFrame"
-                android:layout_width="0dp"
-                android:layout_height="280dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:background="@android:color/transparent" />
+                android:id="@+id/vOverlayDim"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66000000"/>
 
-            <!-- Use ImageView for your silhouette drawable -->
             <ImageView
                 android:id="@+id/ivOverlaySilhouette"
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:contentDescription="Car silhouette overlay"
-                android:scaleType="fitCenter"
-                tools:src="@android:drawable/ic_menu_gallery" />
+                android:scaleType="centerInside"
+                app:tint="#FFFFFF"
+                android:alpha="0.5"
+                tools:src="@drawable/car_front" />
         </FrameLayout>
 
     </FrameLayout>
 
-    <!-- Bottom controls -->
     <LinearLayout
         android:id="@+id/bottomPanel"
         android:layout_width="0dp"

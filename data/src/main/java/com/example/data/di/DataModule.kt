@@ -3,8 +3,9 @@ package com.example.data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.data.db.AppDatabase
-import com.example.data.db.dao.InspectionDao
-import com.example.data.db.dao.VehicleDao
+import com.example.data.db.dao.baseline.BaselineVehicleDao
+import com.example.data.db.dao.inspection.InspectionDao
+import com.example.data.db.dao.vehicle.VehicleDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,5 +43,12 @@ object DataModule {
         database: AppDatabase
     ): InspectionDao {
         return database.inspectionDao()
+    }
+
+    @Provides
+    fun provideBaselineDao(
+        database: AppDatabase
+    ): BaselineVehicleDao {
+        return database.baselineDao()
     }
 }

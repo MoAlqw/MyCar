@@ -1,6 +1,6 @@
 package com.example.mycar.model.vehicle
 
-import com.example.domain.model.Vehicle
+import com.example.domain.model.vehicle.Vehicle
 import com.example.mycar.model.inspection.InspectionUi
 
 data class VehicleDetailsUiState(

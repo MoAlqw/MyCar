@@ -16,10 +16,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.domain.model.inspection.instruction
-import com.example.domain.model.inspection.title
 import com.example.mycar.databinding.FragmentInspectionCameraBinding
 import com.example.mycar.fragments.BaseFragment
+import com.example.mycar.model.extension.carside.instruction
+import com.example.mycar.model.extension.carside.title
 import com.example.mycar.model.inspection.InspectionCaptureUiState
 import com.example.mycar.model.inspection.toOverlay
 import kotlinx.coroutines.launch
@@ -83,9 +83,13 @@ class InspectionCameraFragment : BaseFragment<FragmentInspectionCameraBinding>(
     }
 
     private fun render(state: InspectionCaptureUiState) = with(binding) {
-        tvTitle.text = state.currentSide.title()
-        tvStep.text = state.progressText
-        tvInstruction.text = state.currentSide.instruction()
+        tvTitle.text = getString(state.currentSide.title())
+        tvStep.text = getString(
+            state.progressText,
+            state.currentStepIndex + 1,
+            state.steps.size
+        )
+        tvInstruction.text = getString(state.currentSide.instruction())
         applyOverlay(state)
     }
 

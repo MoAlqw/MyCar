@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.comparison.DamageChangeType
 import com.example.mycar.R
 import com.example.mycar.databinding.ItemCompareIssueBinding
+import com.example.mycar.model.extension.carside.nameSide
 import com.example.mycar.model.inspection.ItemCompareUi
 
 class InspectionComparisonAdapter: ListAdapter<ItemCompareUi, InspectionComparisonAdapter.ItemCompareViewHolder>(DiffCallback) {
@@ -56,7 +57,12 @@ class InspectionComparisonAdapter: ListAdapter<ItemCompareUi, InspectionComparis
         val colorBrandGreen = binding.root.context.getColor(R.color.brand_green)
 
         fun bind(item: ItemCompareUi) {
-            binding.tvIssueTitle.text = item.getNameOfSideAndIssue()
+            binding.tvIssueTitle.text =
+                binding.root.context.getString(
+                    R.string.issue_full_title,
+                    binding.root.context.getString(item.side.nameSide()),
+                    item.label
+                )
             binding.tvStatusIssue.text = item.type.name
 
             when (item.type) {

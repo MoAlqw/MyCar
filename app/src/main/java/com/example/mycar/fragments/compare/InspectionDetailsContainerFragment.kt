@@ -23,9 +23,9 @@ class InspectionDetailsContainerFragment : BaseFragment<FragmentInspectionDetail
         val inspectionId =
             requireArguments().getString(INSPECTION_ID, "")
 
-        val baselineId = requireArguments().getString(BASELINE_ID, "")
+        val baselineId = requireArguments().getString(BASELINE_ID)
 
-        val pages = if (inspectionId == baselineId) {
+        val pages = if (inspectionId == baselineId || baselineId == null) {
             listOf(PageType.ANALYSIS)
         } else {
             listOf(PageType.ANALYSIS, PageType.COMPARISON)
@@ -59,7 +59,7 @@ class InspectionDetailsContainerFragment : BaseFragment<FragmentInspectionDetail
         private const val INSPECTION_ID = "inspection_id"
         private const val BASELINE_ID = "baseline_id"
 
-        fun newInstance(inspectionId: String, baselineId: String) =
+        fun newInstance(inspectionId: String, baselineId: String?) =
             InspectionDetailsContainerFragment().apply {
                 arguments = bundleOf().apply {
                     putString(INSPECTION_ID, inspectionId)

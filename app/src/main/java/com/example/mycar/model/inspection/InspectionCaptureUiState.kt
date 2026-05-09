@@ -21,20 +21,12 @@ data class InspectionCaptureUiState(
     val currentSide: CarSide
         get() = currentStep.side
 
-    val progressText: String
-        get() = "STEP ${currentStepIndex + 1} OF ${steps.size}"
+    val progressText: Int
+        get() = R.string.step_of_state_inspection_vehicle
+
 
     val isLastStep: Boolean
         get() = currentStepIndex == steps.lastIndex
-
-    val imageOfCurrentStep: Int
-        get() = when (currentStep.side) {
-            CarSide.FRONT, CarSide.REAR -> {
-                R.drawable.car_front
-            }
-            CarSide.LEFT -> R.drawable.car_side
-            CarSide.RIGHT -> R.drawable.car_side
-        }
 }
 
 fun InspectionCaptureUiState.toOverlay() = when (this.currentSide) {

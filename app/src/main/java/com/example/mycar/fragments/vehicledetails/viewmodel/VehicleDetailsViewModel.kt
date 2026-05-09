@@ -1,5 +1,6 @@
 package com.example.mycar.fragments.vehicledetails.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.comparison.InspectionComparison
@@ -49,13 +50,19 @@ class VehicleDetailsViewModel @Inject constructor(
     private var observeVehicleJob: Job? = null
 
     fun loadVehicle(vehicleId: String) {
+        if (_uiState.value.vehicle?.id == vehicleId && _uiState.value.inspections.isNotEmpty()) {
+            return
+        }
+
         observeVehicleJob?.cancel()
 
         observeVehicleJob = viewModelScope.launch {
             try {
-                _uiState.value = VehicleDetailsUiState(isLoading = true)
+                _uiState.value = _uiState.value.copy(isLoading = true, error = null)
+
                 syncInspectionsUseCase(vehicleId)
                 val vehicle = getVehicleDetailsUseCase(vehicleId)
+
                 combine(
                     getAllInspectionsOfVehicleUseCase(vehicleId),
                     getBaselineUseCase(vehicleId)
@@ -78,10 +85,9 @@ class VehicleDetailsViewModel @Inject constructor(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                _uiState.value = VehicleDetailsUiState(
+                _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    error = e.message
-                        ?: "Failed to load vehicle details"
+                    error = e.message ?: "Failed to load vehicle details"
                 )
             }
         }
@@ -109,8 +115,8 @@ class VehicleDetailsViewModel @Inject constructor(
         }
     }
 
-    fun inspectionBaselineId(): String {
-        return  _uiState.value.inspections.find { it.isBaseline }?.id ?: ""
+    fun inspectionBaselineId(): String? {
+        return  _uiState.value.inspections.find { it.isBaseline }?.id
     }
 
     private suspend fun compareInspection(baselineId: String?, currentInspectionId: String): InspectionComparison? {

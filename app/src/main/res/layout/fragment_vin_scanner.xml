@@ -4,20 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Camera preview -->
     <androidx.camera.view.PreviewView
         android:id="@+id/previewView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Dark overlay -->
     <View
         android:id="@+id/overlayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#66000000" />
 
-    <!-- Foreground UI -->
     <LinearLayout
         android:id="@+id/rootContent"
         android:layout_width="match_parent"
@@ -31,6 +28,7 @@
             android:background="@android:color/transparent"
             app:navigationIcon="@drawable/ic_arrow_back_white"
             app:title="Scan VIN"
+            app:titleTextAppearance="@style/ToolbarTitleStyle"
             app:titleTextColor="@android:color/white" />
 
         <LinearLayout
@@ -47,7 +45,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Align VIN in frame"
+                android:text="@string/align_vin_in_frame"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -58,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Point camera at VIN on the registration document"
+                android:text="@string/point_camera_at_vin_on_the_registration_document"
                 android:textColor="#D1D5DB"
                 android:textSize="15sp" />
 
@@ -83,7 +81,6 @@
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scanning..."
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -106,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:minWidth="0dp"
-                android:text="Flash"
+                android:text="@string/flash"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:backgroundTint="@android:color/transparent"

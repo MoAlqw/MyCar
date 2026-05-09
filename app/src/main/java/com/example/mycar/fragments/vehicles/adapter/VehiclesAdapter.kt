@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.vehicle.Vehicle
+import com.example.mycar.R
 import com.example.mycar.databinding.CarCardBinding
 
 class VehiclesAdapter(
@@ -41,7 +42,10 @@ class VehiclesAdapter(
         fun bind(item: Vehicle) {
             vehicle = item
 
-            binding.tvTitle.text = "${item.make} ${item.model}"
+            binding.tvTitle.text = binding.root.context.getString(
+                R.string.vehicle_full_name,
+                item.make, item.model
+            )
             binding.tvPlate.text = item.plate
             binding.tvSubtitle.text = item.year.toString()
         }

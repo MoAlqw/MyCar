@@ -14,8 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="Inspection Results"
-        app:titleTextColor="@color/text_primary" />
+        app:title="@string/inspection_results"
+        app:titleTextAppearance="@style/ToolbarTitleStyle"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

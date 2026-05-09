@@ -54,7 +54,17 @@ class VehiclesFragment : BaseFragment<FragmentVehiclesBinding>(
     private fun observeVehicles() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.vehicles.collectLatest { vehicles ->
-                vehiclesAdapter.submitList(vehicles)
+                when (vehicles.size) {
+                    0 -> {
+                        binding.tvNoVehicles.visibility = View.VISIBLE
+                        binding.rvVehicles.visibility = View.GONE
+                    }
+                    else -> {
+                        binding.tvNoVehicles.visibility = View.GONE
+                        binding.rvVehicles.visibility = View.VISIBLE
+                        vehiclesAdapter.submitList(vehicles)
+                    }
+                }
             }
         }
     }

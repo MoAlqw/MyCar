@@ -14,8 +14,7 @@
         android:elevation="0dp"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:title="Add Vehicle"
-        app:titleCentered="false"
-        app:titleTextColor="#0F172A"
+        app:titleTextAppearance="@style/ToolbarTitleStyle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -56,7 +55,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vehicle Details"
+                android:text="@string/vehicle_details"
                 android:textColor="#0F172A"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -66,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Enter the information exactly as it appears on your registration."
+                android:text="@string/enter_the_information"
                 android:textColor="#64748B"
                 android:textSize="16sp" />
 
@@ -76,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="8dp"
-                android:text="Make"
+                android:text="@string/make"
                 android:textColor="@color/brand_green"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -86,7 +85,7 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="e.g. Toyota"
+                android:hint="@string/e_g_toyota"
                 app:boxBackgroundColor="@android:color/white"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -116,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
-                android:text="Model"
+                android:text="@string/model"
                 android:textColor="@color/brand_green"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -126,7 +125,7 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="e.g. Camry"
+                android:hint="@string/e_g_camry"
                 app:boxBackgroundColor="@android:color/white"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -168,7 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Year"
+                        android:text="@string/year"
                         android:textColor="@color/brand_green"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -178,7 +177,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="2024"
+                        android:hint="@string/_2024"
                         app:boxBackgroundColor="@android:color/white"
                         app:boxCornerRadiusTopStart="16dp"
                         app:boxCornerRadiusTopEnd="16dp"
@@ -219,7 +218,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="License Plate"
+                        android:text="@string/license_plate"
                         android:textColor="@color/brand_green"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -229,7 +228,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="123ABC"
+                        android:hint="@string/_123abc"
                         app:boxBackgroundColor="@android:color/white"
                         app:boxCornerRadiusTopStart="16dp"
                         app:boxCornerRadiusTopEnd="16dp"
@@ -248,6 +247,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textCapCharacters"
                             android:maxLines="1"
+                            android:maxLength="6"
                             android:textColor="#0F172A"
                             android:textColorHint="#94A3B8"
                             android:textSize="18sp" />
@@ -261,7 +261,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
-                android:text="VIN (Vehicle Identification Number)"
+                android:text="@string/vin_vehicle_identification_number"
                 android:textColor="@color/brand_green"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -271,7 +271,7 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="17-CHARACTER VIN"
+                android:hint="@string/_17_character_vin"
                 app:boxBackgroundColor="@android:color/white"
                 app:boxCornerRadiusTopStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -305,7 +305,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Find this on your dashboard or driver side door frame."
+                android:text="@string/find_this_on_your_dashboard"
                 android:textColor="#94A3B8"
                 android:textSize="14sp" />
 
@@ -315,7 +315,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Complete Vehicle Setup"
+                android:text="@string/complete_vehicle_setup"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textStyle="bold"

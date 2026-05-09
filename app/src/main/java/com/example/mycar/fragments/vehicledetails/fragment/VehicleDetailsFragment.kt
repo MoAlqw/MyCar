@@ -41,7 +41,6 @@ class VehicleDetailsFragment : BaseFragment<FragmentVehicleDetailsBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val vehicleId = requireArguments().getString(VEHICLE_ID, "")
         viewModel.loadVehicle(vehicleId)
 

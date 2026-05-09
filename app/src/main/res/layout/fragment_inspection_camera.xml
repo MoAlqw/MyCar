@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <!-- Top bar -->
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Back"
+        android:contentDescription="@string/back"
         android:padding="8dp"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,6 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Front View"
         android:textColor="#1A1F36"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -39,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="STEP 1 OF 4"
         android:textAllCaps="true"
         android:textColor="#2E7D32"
         android:textSize="14sp"
@@ -49,7 +46,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:text="STEP 1 OF 4" />
 
-    <!-- Camera container -->
     <FrameLayout
         android:id="@+id/cameraContainer"
         android:layout_width="0dp"
@@ -61,14 +57,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvStep">
 
-        <!-- Real camera preview goes here -->
         <androidx.camera.view.PreviewView
             android:id="@+id/previewView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter" />
 
-        <!-- Dark top bubble with instruction -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/instructionCard"
             android:layout_width="match_parent"
@@ -89,7 +83,6 @@
                 android:paddingEnd="24dp"
                 android:paddingBottom="16dp"
                 android:gravity="center"
-                android:text="Align the front of the car within the silhouette."
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 tools:text="Align the front of the car within the silhouette." />
@@ -112,7 +105,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:contentDescription="Car silhouette overlay"
+                android:contentDescription="@string/car_silhouette_overlay"
                 android:scaleType="centerInside"
                 app:tint="#FFFFFF"
                 android:alpha="0.5"
@@ -161,7 +154,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center"
-                    android:contentDescription="Capture"
+                    android:contentDescription="@string/capture"
                     android:src="@android:drawable/ic_menu_camera"
                     app:tint="#FFFFFF" />
             </com.google.android.material.card.MaterialCardView>

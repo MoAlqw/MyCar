@@ -9,7 +9,7 @@ class InspectionPagerAdapter(
     fragment: Fragment,
     private val pages: List<PageType>,
     private val inspectionId: String,
-    private val baselineId: String
+    private val baselineId: String?
 ) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount() = pages.size
@@ -17,7 +17,7 @@ class InspectionPagerAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (pages[position]) {
             PageType.ANALYSIS -> InspectionOfVehicleFragment.newInstance(inspectionId)
-            PageType.COMPARISON -> InspectionComparisonFragment.newInstance(inspectionId, baselineId)
+            PageType.COMPARISON -> InspectionComparisonFragment.newInstance(inspectionId, baselineId!!)
         }
     }
 }

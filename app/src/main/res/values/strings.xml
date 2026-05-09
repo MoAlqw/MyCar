@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyCar</string>
+    <string name="app_name" translatable="false">MyCar</string>
     <string name="quarterly_maintenance">Quarterly Maintenance</string>
     <string name="no_detected_issues">No detected issues</string>
     <string name="no_compare_detected_issues">No compare detected issues</string>
@@ -28,7 +28,6 @@
     <string name="confirm_photo">Confirm Photo</string>
     <string name="retake">Retake</string>
     <string name="the_selected_side_is_centered">The selected side is centered</string>
-    <string name="checklist_item">Checklist item</string>
     <string name="the_image_is_not_blurry">The image is not blurry</string>
     <string name="the_car_is_fully_visible">The car is fully visible</string>
     <string name="make_sure_the_car_is_clearly_visible_and_the_selected_side_is_centered_before_continuing">Make sure the car is clearly visible and the selected side is centered before continuing.</string>
@@ -37,4 +36,51 @@
     <string name="photo_preview">Photo Preview</string>
     <string name="days">%1$d DAYS</string>
     <string name="day">%1$d DAY</string>
+    <string name="no_vehicles_found">No vehicles found</string>
+    <string name="divide" translatable="false">•</string>
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="enter_the_information">Enter the information exactly as it appears on your registration.</string>
+    <string name="make">Make</string>
+    <string name="e_g_toyota">e.g. Toyota</string>
+    <string name="model">Model</string>
+    <string name="e_g_camry">e.g. Camry</string>
+    <string name="year">Year</string>
+    <string name="_2024" translatable="false">2024</string>
+    <string name="license_plate">License Plate</string>
+    <string name="_123abc" translatable="false">123ABC</string>
+    <string name="vin_vehicle_identification_number">VIN (Vehicle Identification Number)</string>
+    <string name="_17_character_vin">17-CHARACTER VIN</string>
+    <string name="find_this_on_your_dashboard">Find this on your dashboard or driver side door frame.</string>
+    <string name="complete_vehicle_setup">Complete Vehicle Setup</string>
+    <string name="back">Back</string>
+    <string name="vehicle_full_name" translatable="false">%1$s %2$s</string>
+    <string name="front_name">Front</string>
+    <string name="rear_name">Rear</string>
+    <string name="left_name">Left</string>
+    <string name="right_name">Right</string>
+    <string name="front_view_name">Front View</string>
+    <string name="rear_view_name">Rear View</string>
+    <string name="left_view_name">Left View</string>
+    <string name="right_view_name">Right View</string>
+    <string name="front_instruction">Align the front of the car within the silhouette.</string>
+    <string name="rear_instruction">Align the rear of the car within the silhouette.</string>
+    <string name="left_instruction">Align the left side of the car within the silhouette.</string>
+    <string name="right_instruction">Align the right side of the car within the silhouette.</string>
+    <string name="car_silhouette_overlay">Car silhouette overlay</string>
+    <string name="step_of_state_inspection_vehicle">STEP %1$d OF %2$d</string>
+    <string name="capture">Capture</string>
+    <string name="issue_full_title" translatable="false">%1$s %2$s</string>
+    <string name="total_issues">Total Issues</string>
+    <string name="confidence">Confidence</string>
+    <string name="inspection_results">Inspection Results</string>
+    <string name="captured_photo_preview">Captured photo preview</string>
+    <string name="nothing">Nothing</string>
+    <string name="inspections">Inspections</string>
+    <string name="add_vehicle">Add vehicle</string>
+    <string name="align_vin_in_frame">Align VIN in frame</string>
+    <string name="point_camera_at_vin_on_the_registration_document">Point camera at VIN on the registration document</string>
+    <string name="flash">Flash</string>
+    <string name="scanning">Scanning…</string>
+    <string name="vin_detected">VIN detected</string>
+    <string name="recognition_error">Recognition error</string>
 </resources>

@@ -40,7 +40,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Back"
+                android:contentDescription="@string/back"
                 android:padding="8dp"
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="260dp"
                         android:adjustViewBounds="true"
-                        android:contentDescription="Captured photo preview"
+                        android:contentDescription="@string/captured_photo_preview"
                         android:scaleType="centerCrop"
                         tools:src="@android:drawable/ic_menu_gallery" />
 
@@ -110,7 +110,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:contentDescription="Status"
+                                android:contentDescription="@string/nothing"
                                 android:src="@android:drawable/presence_online"
                                 app:tint="#4CAF50" />
 
@@ -185,7 +185,7 @@
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:contentDescription="Checklist item"
+                            android:contentDescription="@string/nothing"
                             android:src="@android:drawable/presence_online"
                             app:tint="#2E7D32" />
 
@@ -210,7 +210,7 @@
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:contentDescription="Checklist item"
+                            android:contentDescription="@string/nothing"
                             android:src="@android:drawable/presence_online"
                             app:tint="#2E7D32" />
 
@@ -235,7 +235,7 @@
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:contentDescription="@string/checklist_item"
+                            android:contentDescription="@string/nothing"
                             android:src="@android:drawable/presence_online"
                             app:tint="#2E7D32" />
 

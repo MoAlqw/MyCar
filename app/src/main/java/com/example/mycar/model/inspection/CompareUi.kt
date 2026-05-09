@@ -4,7 +4,6 @@ import com.example.domain.model.comparison.DamageChangeType
 import com.example.domain.model.comparison.DamageComparison
 import com.example.domain.model.comparison.InspectionComparison
 import com.example.domain.model.inspection.CarSide
-import com.example.domain.model.inspection.nameSide
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -39,11 +38,7 @@ data class ItemCompareUi(
     val side: CarSide,
     val label: String,
     val type: DamageChangeType
-) {
-    fun getNameOfSideAndIssue(): String {
-        return side.nameSide() + " " + label.replaceFirstChar { it.uppercase() }
-    }
-}
+)
 
 fun InspectionComparison.toCompareUi(): CompareUi {
     val dateTimeBaseline = LocalDateTime.parse(baselineDate)
@@ -55,12 +50,12 @@ fun InspectionComparison.toCompareUi(): CompareUi {
         baselineInspectionPhoto = baselineInspectionPhoto,
         currentInspectionPhoto = currentInspectionPhoto,
         changes = changes.map { it.toItemCompareUi() },
-        totalChanges = changes.size
+        totalChanges = changes.filter { it.type != DamageChangeType.UNCHANGED }.size
     )
 }
 
 fun DamageComparison.toItemCompareUi() = ItemCompareUi(
     side = side,
-    label = label,
+    label = label.replaceFirstChar { it.uppercase() },
     type = type
 )

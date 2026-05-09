@@ -14,7 +14,7 @@
         android:background="@android:color/white"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:title="Vehicle Details"
-        app:titleTextColor="@color/text_primary"
+        app:titleTextAppearance="@style/ToolbarTitleStyle"
         app:menu="@menu/menu_vehicle_details"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,13 +84,12 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvPastInspections"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:text="Inspections"
+                android:text="@string/inspections"
                 android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />

@@ -23,7 +23,14 @@ data class InspectionSideDto(
     val has_damage: Boolean,
     val damage_count: Int,
     val damage_detections: List<DetectionDto>
-)
+) {
+    companion object {
+        const val FRONT = "front"
+        const val REAR = "rear"
+        const val LEFT = "left"
+        const val RIGHT = "right"
+    }
+}
 
 data class DetectionDto(
     val id: String,

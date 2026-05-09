@@ -8,10 +8,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
+import androidx.camera.core.TorchState
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import com.example.mycar.R
 import com.example.mycar.databinding.FragmentVinScannerBinding
 import com.example.mycar.fragments.BaseFragment
 import com.google.common.util.concurrent.ListenableFuture
@@ -93,12 +95,16 @@ class VinScannerFragment : BaseFragment<FragmentVinScannerBinding>(
                 }
 
             cameraProvider.unbindAll()
-            cameraProvider.bindToLifecycle(
+            val camera = cameraProvider.bindToLifecycle(
                 viewLifecycleOwner,
                 CameraSelector.DEFAULT_BACK_CAMERA,
                 preview,
                 imageAnalysis
             )
+            binding.btnFlash.setOnClickListener {
+                val enabled = camera.cameraInfo.torchState.value == TorchState.ON
+                camera.cameraControl.enableTorch(!enabled)
+            }
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
@@ -107,9 +113,9 @@ class VinScannerFragment : BaseFragment<FragmentVinScannerBinding>(
 
         requireActivity().runOnUiThread {
             binding.tvStatus.text = when (status) {
-                VinImageAnalyzer.Status.Scanning -> "Scanning..."
-                VinImageAnalyzer.Status.VinDetected -> "VIN detected"
-                VinImageAnalyzer.Status.Error -> "Recognition error"
+                VinImageAnalyzer.Status.Scanning -> getString(R.string.scanning)
+                VinImageAnalyzer.Status.VinDetected -> getString(R.string.vin_detected)
+                VinImageAnalyzer.Status.Error -> getString(R.string.recognition_error)
             }
         }
     }

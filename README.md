@@ -44,7 +44,6 @@ Fragment → ViewModel → UseCase → Repository
 | Асинхронность   | Kotlin Coroutines + Flow                |
 | Сеть            | Retrofit + OkHttp                       |
 | БД              | Room (SQLite)                           |
-| Навигация       | Navigation Component                    |
 | Архитектура     | MVVM + Clean Architecture               |
 | UI              | ViewBinding, Material Design            |
 

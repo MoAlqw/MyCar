@@ -75,7 +75,7 @@ Fragment → ViewModel → UseCase → Repository
 
 ### Backend
 ```bash
-git clone https://github.com/MoAlqw/MyCar-backend  # если вынесен отдельно
+git clone https://github.com/MoAlqw/backend
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
